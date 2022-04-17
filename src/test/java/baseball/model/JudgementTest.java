@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class JudgementTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"4533, 354", "1, 245"})
+    @CsvSource(value = {"4533, 354", "1, 245", "24, 354"})
     void CsvSource_Test_For_Length3_Judgement(String inputValue, String answer) {
         Judgement judgement = new Judgement();
 
