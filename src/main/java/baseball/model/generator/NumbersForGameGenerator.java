@@ -19,15 +19,33 @@ public class NumbersForGameGenerator implements RandomGenerator {
         return generateNumbers(LENGTH_OF_NUMBER);
     }
 
-    private int generateNumberUsingRandoms(int minNumber, int maxNumber) {
-        return Randoms.pickNumberInRange(minNumber, maxNumber);
+    private int generateNumberUsingRandoms(int minNumber, int maxNumber, int currentValue) {
+        int randomNumber;
+        do {
+            randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
+        } while (validateRandomNumber(currentValue, randomNumber));
+        return randomNumber;
+    }
+
+    private boolean validateRandomNumber(int currentValue, int randomNumber) {
+        int quotient = currentValue;
+        boolean result = false;
+        while (quotient != 0) {
+            result = checkDuplicate(quotient % 10, randomNumber);
+            quotient /= 10;
+        }
+        return result;
+    }
+
+    private boolean checkDuplicate(int quotient, int randomNumber) {
+        return quotient == randomNumber;
     }
 
     private int generateNumbers(final int count) {
         int value = 0;
-        for(int loop = 0; loop < count; loop++) {
+        for (int loop = 0; loop < count; loop++) {
             value *= 10;
-            value += generateNumberUsingRandoms(MIN_VALUE, MAX_VALUE);
+            value += generateNumberUsingRandoms(MIN_VALUE, MAX_VALUE, value);
         }
         return value;
     }
