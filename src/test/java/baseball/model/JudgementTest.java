@@ -20,7 +20,7 @@ public class JudgementTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"354, 153, 2", "123, 456, 0", "132, 213, 3", "156,573, 1"})
+    @CsvSource(value = {"354, 153, 1", "123, 456, 0", "132, 213, 3", "156,573, 1"})
     void CsvSource_Test_For_Ball_Judgement(String inputValue, String answer, int expected) {
         Judgement judgement = new Judgement();
         assertThat(judgement.judge(inputValue, answer).get("Ball")).isEqualTo(expected);

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Judgement {
+    public static final String STRIKE = "Strike";
+    public static final String BALL = "Ball";
     private final Map<String, Integer> result;
 
     public Judgement() {
@@ -12,18 +14,20 @@ public class Judgement {
     }
 
     private void initializeResultMap() {
-        result.put("Strike", 0);
-        result.put("Ball", 0);
+        result.put(STRIKE, 0);
+        result.put(BALL, 0);
     }
 
     public Map<String, Integer> judge(String inputValue, String answer) {
         validateLength(inputValue);
         initializeResultMap();
-        int ball = countOfBall(inputValue, answer);
         int strike = countOfStrike(inputValue, answer);
-        Map<String, Integer> result = new HashMap<>();
-        result.put("Ball", ball);
-        result.put("Strike", strike);
+        int ball = countOfBall(inputValue, answer) - strike;
+        if(ball < 0) {
+            ball = 0;
+        }
+        result.put(BALL, ball);
+        result.put(STRIKE, strike);
 
         return result;
     }
