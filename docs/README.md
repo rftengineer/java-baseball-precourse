@@ -2,11 +2,11 @@
 
 ## TO-DO
 
-* Random 값 추출 객체 만들기
-    * camp.nextstep.edu.missionutils의 Randoms 사용하기
-*
+* 게임의 최소, 최대, 개수를 주입받을 수 있도록 수정 가능한가?
 
 ## DONE
+* Random 값 추출 객체 만들기
+    * camp.nextstep.edu.missionutils의 Randoms 사용하기
 * 게임을 수행할 객체 생성
     * 정답 체크할 객체 생성 및 구현
         * 숫자 판정 모델 구현
