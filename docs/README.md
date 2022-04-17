@@ -15,3 +15,4 @@
         * 판정 모델 결과에서 낫싱, 스트라이크, 볼 모델 구현
     * 입력한 값의 Validation 구현
         * IllegalArgumentException 구조 구현
+    * 게임 상황 판독할 Class 및 Static Method 추가
