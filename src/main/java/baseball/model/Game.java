@@ -4,33 +4,16 @@ import java.util.Map;
 
 public class Game {
 
+    public static final int CONDITION_FOR_WIN = 3;
+
     public static boolean isGameOver(Map<String, Integer> result) {
-        return result.get("Strike") == 3;
+        return result.get("Strike") == CONDITION_FOR_WIN;
     }
 
     public static String currentScore(Map<String, Integer> result) {
-        String ball = validateAndResult("Ball", result.get("Ball"));
-        String strike = validateAndResult("Strike", result.get("Strike"));
-        return concatResult(ball, strike);
+        String ball = StringUtilsForGame.validateAndResult("Ball", result.get("Ball"));
+        String strike = StringUtilsForGame.validateAndResult("Strike", result.get("Strike"));
+        return StringUtilsForGame.concatResult(ball, strike);
     }
 
-    private static String concatResult(String ball, String strike) {
-        if(ball.equals("") && strike.equals("")) {
-            return "낫싱";
-        }
-        return String.join(" ", ball, strike).trim();
-    }
-
-    private static String validateAndResult(String category, Integer value) {
-        if(value == 0) {
-            return "";
-        }
-        if (category.equals("Strike")) {
-            return value + "스트라이크";
-        }
-        if (category.equals("Ball")) {
-            return value + "볼";
-        }
-        return "";
-    }
 }
