@@ -4,8 +4,6 @@
 
 * Random 값 추출 객체 만들기
     * camp.nextstep.edu.missionutils의 Randoms 사용하기
-* 게임 수행할 Input view 생성
-* 게임 수행할 Output view 생성
 *
 
 ## DONE
@@ -16,3 +14,5 @@
     * 입력한 값의 Validation 구현
         * IllegalArgumentException 구조 구현
     * 게임 상황 판독할 Class 및 Static Method 추가
+* 게임 수행할 Input view 생성
+* 게임 수행할 Output view 생성
