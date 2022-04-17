@@ -12,18 +12,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean keepPlaying = true;
+        RandomGenerator randomGenerator = new NumbersForGameGenerator(1, 9, 3);
+        Judgement judgement = new Judgement();
         while (keepPlaying) {
-            keepPlaying = doGame();
+            keepPlaying = doGame(randomGenerator, judgement);
         }
     }
 
-    private static boolean doGame() {
-        Judgement judgement = new Judgement();
-        RandomGenerator generator = new NumbersForGameGenerator(1, 9, 3);
+    private static boolean doGame(RandomGenerator gameGenerator, Judgement judgement1) {
         Map<String, Integer> judge;
-        String answer = String.valueOf(generator.generate());
+        String answer = String.valueOf(gameGenerator.generate());
         do {
-            judge = judgement.judge(InputView.enterDigitValue(), answer);
+            judge = judgement1.judge(InputView.enterDigitValue(), answer);
             OutputView.showResultWithGameScore(Game.currentScore(judge));
         } while (!Game.isGameOver(judge));
         OutputView.clearTheGame();
