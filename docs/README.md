@@ -2,9 +2,6 @@
 
 ## TO-DO
 
-* 게임의 최소, 최대, 개수를 주입받을 수 있도록 수정 가능한가?
-
-
 ## DONE
 * Random 값 추출 객체 만들기
     * camp.nextstep.edu.missionutils의 Randoms 사용하기
@@ -18,3 +15,4 @@
 * 게임 수행할 Input view 생성
 * 게임 수행할 Output view 생성
 * Ball, Strike 구분을 Enum으로 수정
+* 게임의 최소, 최대, 개수를 주입받을 수 있도록 수정 가능한가?
