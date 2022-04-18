@@ -3,6 +3,7 @@ package baseball.model;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import baseball.model.enumeration.GameRule;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -23,13 +24,13 @@ public class JudgementTest {
     @CsvSource(value = {"354, 153, 1", "123, 456, 0", "132, 213, 3", "156,573, 1"})
     void CsvSource_Test_For_Ball_Judgement(String inputValue, String answer, int expected) {
         Judgement judgement = new Judgement();
-        assertThat(judgement.judge(inputValue, answer).get("Ball")).isEqualTo(expected);
+        assertThat(judgement.judge(inputValue, answer).get(GameRule.BALL)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"123, 154, 1", "123, 124, 2", "135, 135, 3", "123, 456, 0"})
     void CsvSource_Test_For_Strike_Judgement(String inputValue, String answer, int expected) {
         Judgement judgement = new Judgement();
-        assertThat(judgement.judge(inputValue, answer).get("Strike")).isEqualTo(expected);
+        assertThat(judgement.judge(inputValue, answer).get(GameRule.STRIKE)).isEqualTo(expected);
     }
 }

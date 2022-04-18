@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.model.enumeration.GameRule;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class Judgement {
     public static final String BALL = "Ball";
     public static final int LIMIT_OF_STRING_LENGTH = 3;
     public static final int ZERO = 0;
-    private final Map<String, Integer> result;
+    private final Map<GameRule, Integer> result;
 
     public Judgement() {
         this.result = new HashMap<>();
@@ -16,11 +17,11 @@ public class Judgement {
     }
 
     private void initializeResultMap() {
-        result.put(STRIKE, 0);
-        result.put(BALL, 0);
+        result.put(GameRule.STRIKE, 0);
+        result.put(GameRule.BALL, 0);
     }
 
-    public Map<String, Integer> judge(String inputValue, String answer) {
+    public Map<GameRule, Integer> judge(String inputValue, String answer) {
         validateLength(inputValue);
         initializeResultMap();
         calculateAndStoreResultMap(inputValue, answer);
@@ -34,8 +35,8 @@ public class Judgement {
         if(ball < ZERO) {
             ball = ZERO;
         }
-        result.put(BALL, ball);
-        result.put(STRIKE, strike);
+        result.put(GameRule.BALL, ball);
+        result.put(GameRule.STRIKE, strike);
     }
 
     private static void validateLength(String value) {

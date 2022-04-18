@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.model.Game;
 import baseball.model.Judgement;
+import baseball.model.enumeration.GameRule;
 import baseball.model.generator.NumbersForGameGenerator;
 import baseball.model.generator.RandomGenerator;
 import baseball.view.InputView;
@@ -20,7 +21,7 @@ public class Application {
     }
 
     private static boolean doGame(RandomGenerator gameGenerator, Judgement judgement1) {
-        Map<String, Integer> judge;
+        Map<GameRule, Integer> judge;
         String answer = String.valueOf(gameGenerator.generate());
         do {
             judge = judgement1.judge(InputView.enterDigitValue(), answer);

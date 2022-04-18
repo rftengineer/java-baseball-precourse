@@ -2,6 +2,7 @@ package baseball.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import baseball.model.enumeration.GameRule;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -24,8 +25,8 @@ class GameTest {
     @ParameterizedTest
     @MethodSource("provideMapWith3Strike")
     void isGameOver_With_Param_Using_Stream(Integer value, boolean expected) {
-        Map<String, Integer> result = new HashMap<>();
-        result.put("Strike", value);
+        Map<GameRule, Integer> result = new HashMap<>();
+        result.put(GameRule.STRIKE, value);
 
         assertThat(Game.isGameOver(result)).isEqualTo(expected);
     }
@@ -33,8 +34,8 @@ class GameTest {
     @ParameterizedTest
     @CsvSource(value = {"3, true", "2, false", "1, false", "0, false"})
     void isGameOver_With_Param(Integer value, boolean expected) {
-        Map<String, Integer> result = new HashMap<>();
-        result.put("Strike", value);
+        Map<GameRule, Integer> result = new HashMap<>();
+        result.put(GameRule.STRIKE, value);
 
         assertThat(Game.isGameOver(result)).isEqualTo(expected);
     }
@@ -44,9 +45,9 @@ class GameTest {
             , "0, 1, 1볼"})
     void checkCurrentScoreWithString(Integer strikeValue, Integer ballValue,
                                      String expected) {
-        Map<String, Integer> result = new HashMap<>();
-        result.put("Strike", strikeValue);
-        result.put("Ball", ballValue);
+        Map<GameRule, Integer> result = new HashMap<>();
+        result.put(GameRule.STRIKE, strikeValue);
+        result.put(GameRule.BALL, ballValue);
 
         assertThat(Game.currentScore(result)).isEqualTo(expected);
     }
