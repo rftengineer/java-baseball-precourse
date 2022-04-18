@@ -3,6 +3,7 @@
 ## TO-DO
 
 * 게임의 최소, 최대, 개수를 주입받을 수 있도록 수정 가능한가?
+* Ball, Strike 구분을 Enum으로 수정
 
 ## DONE
 * Random 값 추출 객체 만들기
