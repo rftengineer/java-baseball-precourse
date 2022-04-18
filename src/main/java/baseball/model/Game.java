@@ -5,10 +5,8 @@ import java.util.Map;
 
 public class Game {
 
-    public static final int CONDITION_FOR_WIN = 3;
-
-    public static boolean isGameOver(Map<GameRule, Integer> result) {
-        return result.get(GameRule.STRIKE) == CONDITION_FOR_WIN;
+    public static boolean isGameOver(Map<GameRule, Integer> result, final int conditionForWin) {
+        return result.get(GameRule.STRIKE) == conditionForWin;
     }
 
     public static String currentScore(Map<GameRule, Integer> result) {

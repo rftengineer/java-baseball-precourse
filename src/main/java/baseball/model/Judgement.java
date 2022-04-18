@@ -5,14 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Judgement {
-    public static final String STRIKE = "Strike";
-    public static final String BALL = "Ball";
-    public static final int LIMIT_OF_STRING_LENGTH = 3;
-    public static final int ZERO = 0;
+    public final int LIMIT_OF_STRING_LENGTH;
+    public final int ZERO = 0;
     private final Map<GameRule, Integer> result;
 
-    public Judgement() {
+    public Judgement(final int inputLength) {
         this.result = new HashMap<>();
+        this.LIMIT_OF_STRING_LENGTH = inputLength;
         initializeResultMap();
     }
 
@@ -22,7 +21,7 @@ public class Judgement {
     }
 
     public Map<GameRule, Integer> judge(String inputValue, String answer) {
-        validateLength(inputValue);
+        validateLength(inputValue, LIMIT_OF_STRING_LENGTH );
         initializeResultMap();
         calculateAndStoreResultMap(inputValue, answer);
 
@@ -32,16 +31,16 @@ public class Judgement {
     private void calculateAndStoreResultMap(String inputValue, String answer) {
         int strike = countOfStrike(inputValue, answer);
         int ball = countOfBall(inputValue, answer) - strike;
-        if(ball < ZERO) {
+        if (ball < ZERO) {
             ball = ZERO;
         }
         result.put(GameRule.BALL, ball);
         result.put(GameRule.STRIKE, strike);
     }
 
-    private static void validateLength(String value) {
-        if (value.length() != LIMIT_OF_STRING_LENGTH) {
-            throw new IllegalArgumentException("입력 숫자의 자릿수는 3자리여야 합니다.");
+    private static void validateLength(String value, final int lengthLimit) {
+        if (value.length() != lengthLimit) {
+            throw new IllegalArgumentException("입력 숫자의 자릿수는 " + lengthLimit + "자리여야 합니다.");
         }
     }
 
@@ -56,7 +55,7 @@ public class Judgement {
     }
 
     private int valueForStrike(char[] characterOfInputValue, char[] characterOfAnswer, int index) {
-        if(characterOfInputValue[index] == characterOfAnswer[index]) {
+        if (characterOfInputValue[index] == characterOfAnswer[index]) {
             return 1;
         }
         return 0;

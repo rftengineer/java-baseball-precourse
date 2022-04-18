@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class GameTest {
+    private final int CONDITION_FOR_WIN = 3;
 
     private static Stream<Arguments> provideMapWith3Strike() {
         return Stream.of(
@@ -28,7 +29,7 @@ class GameTest {
         Map<GameRule, Integer> result = new HashMap<>();
         result.put(GameRule.STRIKE, value);
 
-        assertThat(Game.isGameOver(result)).isEqualTo(expected);
+        assertThat(Game.isGameOver(result, CONDITION_FOR_WIN)).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -37,7 +38,7 @@ class GameTest {
         Map<GameRule, Integer> result = new HashMap<>();
         result.put(GameRule.STRIKE, value);
 
-        assertThat(Game.isGameOver(result)).isEqualTo(expected);
+        assertThat(Game.isGameOver(result, CONDITION_FOR_WIN)).isEqualTo(expected);
     }
 
     @ParameterizedTest

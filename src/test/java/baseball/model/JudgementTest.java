@@ -8,11 +8,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class JudgementTest {
-
+    final int INPUT_LENGTH = 3;
     @ParameterizedTest
     @CsvSource(value = {"4533, 354", "1, 245", "24, 354"})
     void CsvSource_Test_For_Length3_Judgement(String inputValue, String answer) {
-        Judgement judgement = new Judgement();
+        Judgement judgement = new Judgement(INPUT_LENGTH);
 
         assertThatThrownBy(() -> judgement.judge(inputValue, answer))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -23,14 +23,14 @@ public class JudgementTest {
     @ParameterizedTest
     @CsvSource(value = {"354, 153, 1", "123, 456, 0", "132, 213, 3", "156,573, 1"})
     void CsvSource_Test_For_Ball_Judgement(String inputValue, String answer, int expected) {
-        Judgement judgement = new Judgement();
+        Judgement judgement = new Judgement(INPUT_LENGTH);
         assertThat(judgement.judge(inputValue, answer).get(GameRule.BALL)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"123, 154, 1", "123, 124, 2", "135, 135, 3", "123, 456, 0"})
     void CsvSource_Test_For_Strike_Judgement(String inputValue, String answer, int expected) {
-        Judgement judgement = new Judgement();
+        Judgement judgement = new Judgement(INPUT_LENGTH);
         assertThat(judgement.judge(inputValue, answer).get(GameRule.STRIKE)).isEqualTo(expected);
     }
 }
